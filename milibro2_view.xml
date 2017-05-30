@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="milibro2_cat_tree_view" model="ir.ui.view">
+            <field name="name">milibro2.categorias.tree</field>
+            <field name="model">milibro2.categorias</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree string="Categorias">
+              		<field name="nombre"/>
+					<field name="libros_ids"/>
+              	</tree>
+            </field>
+        </record>
+
+		<record id="milibro2_cat_form_view" model="ir.ui.view">
+            <field name="name">milibro2.categorias.form</field>
+            <field name="model">milibro2.categorias</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Categorias">
+          			<group string="Ficha de Categorias" colspan="1">
+			  			<group>
+							<field name="nombre"/>
+							<field name="libros_ids"/>
+			  			</group>
+          			</group>
+              	</form>
+            </field>
+        </record>
+		
+        <record id="milibro2_tree_view" model="ir.ui.view">
+            <field name="name">milibro2.tree</field>
+            <field name="model">milibro2</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree string="Libros">
+              		<field name="titulo"/>
+              		<field name="paginas"/>
+              		<field name="autor"/>
+              		<field name="editorial"/>
+              		<field name="isbn"/>
+					<field name="precio"/>
+					<field name="fecha"/>
+					<field name="revisado"/>
+					<field name="aprobado"/>
+					<field name="categoria" widget="selection"/>
+					<field name="resumen"/>
+              	</tree>
+            </field>
+        </record>
+
+		<record id="milibro2_form_view" model="ir.ui.view">
+            <field name="name">milibro2.form</field>
+            <field name="model">milibro2</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Libros">
+          			<group string="Ficha de libros" colspan="2">
+			  			<group>
+							<field name="titulo"/>
+							<field name="paginas"/>
+							<field name="autor"/>
+							<field name="editorial"/>
+							<field name="isbn"/>
+							<field name="precio"/>
+			  			</group>
+			  			<group>
+							<field name="fecha"/>
+							<field name="revisado"/>
+							<field name="aprobado"/>
+							<field name="categoria" widget="selection"/>
+							<field name="resumen"/>
+			  			</group>
+          			</group>
+        		</form>
+            </field>
+        </record>
+
+		<record id="action_milibro2_cat_form" model="ir.actions.act_window">
+            <field name="name">Milibro2_cat</field>
+            <field name="res_model">milibro2.categorias</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+        <record id="milibro2_action" model="ir.actions.act_window">
+            <field name="name">Milibro2</field>
+            <field name="res_model">milibro2</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="milibro2_menu" name="LIBROS2" icon="terp-project" web_icon="data/libro.png" web_icon_hover="data/libro.png"/>
+        
+        <menuitem id="submenu_milibro2_menu" parent="milibro2_menu" name="Libros2" sequence="0" />
+        <menuitem id="submenu_milibro2_action" icon="terp-project" parent="submenu_milibro2_menu" name="MisLibros2" sequence="0" action="milibro2_action"/>
+
+        <menuitem id="submenu_categorias_menu" parent="milibro2_menu" name="Categorias" sequence="0" />
+        <menuitem id="submenu_categorias_action" icon="terp-project" parent="submenu_categorias_menu" name="Mis categorias" sequence="0" action="action_milibro2_cat_form"/>
+ 
+    </data>
+</openerp>
